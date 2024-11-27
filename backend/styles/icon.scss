@@ -1,0 +1,20 @@
+.icon-shape {
+    padding: 12px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+.marker{
+    font-size: 35px;
+    position: absolute;
+    top: -35px;
+    left:-15px;
+    color: $primary;
+}
+.icon-check-suceess{
+    color: #28a745;
+    font-size: 5em;
+    padding-bottom: 20px;
+}

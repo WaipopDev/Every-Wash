@@ -1,0 +1,21 @@
+.signin {
+    min-height: calc(100vh);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    .form-signin {
+        min-width: 440px;
+        padding: 35px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 2rem 0 rgb(136 152 170 / 15%);
+        .form-group {
+            padding-bottom: 25px;
+        }
+        .lable-forgot {
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+}

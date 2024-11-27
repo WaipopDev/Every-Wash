@@ -1,0 +1,306 @@
+# ImageWash-BE
+
+{
+    "menu_dashboard": "Dashboard",
+    "menu_report": "Report",
+    "menu_user": "User management",
+    "menu_customer": "Customer",
+    "menu_chats": "Chats",
+    "menu_branch": "Branch",
+    "menu_program": "Program",
+    "menu_washing_machine": "Machine",
+    "menu_wallet": "Member Card",
+    "menu_point_redemtion": "Point & Redemption",
+    "menu_promotion": "Promotion banner",
+    "menu_code_promotion": "Code Promotion",
+    "menu_set_language": "Set Language",
+
+    "dashboard_number_of_branches":"Number of branches", //จำนวนสาขา
+    "dashboard_number_of_washing":"Number of washing", //จำนวนเครื่องซัก
+    "dashboard_number_of_dryers":"Number of dryers", //จำนวนเครื่องอบ
+    "dashboard_number_of_broken":"Number of broken", //จำนวนเครื่องเสีย
+    "dashboard_total_income_24_hours":"Total income 24 hours", //รายได้รวม 24 ชม.
+    "dashboard_income_baht":"Income (baht)", //รายได้(บาท)
+    "dashboard_highest_earning_branch":"Highest earning branch", //สาขาที่ทำรายได้สูงสุด
+    "dashboard_chart_1":"Summary of daily accumulated laundry service usage", //สรุปการใช้บริการร้านสะดวกซักสะสมรายวัน
+    "dashboard_chart_2":"Summary of weekly laundry service usage", //สรุปการใช้บริการร้านสะดวกซักสะสมรายสัปดาห์
+    "dashboard_chart_3":"Summary of monthly laundry service usage", //สรุปการใช้บริการร้านสะดวกซักสะสมรายเดือน
+    "dashboard_chart_4":"Summary of the annual accumulation of laundry service usage", //สรุปการใช้บริการร้านสะดวกซักสะสมรายปี
+    "dashboard_number_of_members":"Number of members", //จำนวนสมาชิก
+    "dashboard_amount_in_wallet":"Amount in wallet", //จำนวนเงินในกระเป๋า
+    "dashboard_select":"Select the branch where the transaction was made", //เลือกสาขาที่ทำรายการ
+    "dashboard_chart_5":"Daily income/sales summary", //สรุปรายได้/ยอดขายรายวัน
+    "dashboard_chart_6":"Weekly income/sales summary", //สรุปรายได้/ยอดขายรายสัปดาห์
+    "dashboard_chart_7":"Monthly income/sales summary", //สรุปรายได้/ยอดขายรายเดือน
+    "dashboard_chart_8":"Annual income/sales summary", //สรุปรายได้/ยอดขายรายปี
+    "dashboard_chart_detail_1":"The previous day", //วันก่อนหน้า
+    "dashboard_chart_detail_2":"Current day", //วันปัจจุบัน
+    "dashboard_chart_detail_3":"Previous week", //สัปดาห์ก่อนหน้า
+    "dashboard_chart_detail_4":"Current week", //สัปดาห์ปัจจุบัน
+    "dashboard_chart_detail_5":"Previous month", //เดือนก่อนหน้า
+    "dashboard_chart_detail_6":"Current month", //เดือนปัจจุบัน
+    "dashboard_chart_detail_7":"Previous year", //ปีก่อนหน้า
+    "dashboard_chart_detail_8":"Current year", //ปีปัจจุบัน
+    "dashboard_latest_update":"Latest update", //อัพเดทล่าสุด
+
+    "report_management":"Report Management", //การจัดการรายงาน
+     "report":"Report",//รายงาน
+    "report_1":"Branch income data report", //รายงานข้อมูลรายรับสาขา
+    "report_2":"Monthly branch income summary report",//รายงานสรุปรายรับสาขารายเดือน
+    "report_3":"Report on data of deduction from member cards for payment of service fees",//รายงานข้อมูลการตัดเงินจากบัตรสมาชิกเพื่อชำระค่าบริการ
+    "report_4":"Report on data of money deduction from PromptPay for payment of service fees (Siam Commercial Bank)",//รายงานข้อมูลการตัดเงินจากพร้อมเพย์เพื่อชำระค่าบริการ (ธนาคารไทยพาณิชย์)
+    "report_5":"Membership card top-up data report",//รายงานข้อมูลการเติมเงินเข้าบัตรสมาชิก
+    "report_6":"Report on data of money deduction from PromptPay to top up member cards (Siam Commercial Bank)",//รายงานข้อมูลการตัดเงินจากพร้อมเพย์เพื่อเติมเงินเข้าบัตรสมาชิก (ธนาคารไทยพาณิชย์)
+     "report_7":"Report on member service usage data",//รายงานข้อมูลการใช้บริการของสมาชิก
+     "report_8":"Branch Refund Data Report",//รายงานข้อมูลการโอนคืนสาขา
+     "report_total_revenue_sales":"Total revenue/sales",//จำนวนรายได้/ยอดขายทั้งสิ้น
+     "report_total_amount":"Total amount",//จำนวนเงินทั้งสิ้น
+     "report_select_1":"Select the branch where the transaction was made",//เลือกสาขาที่ทำรายการ
+     "report_select_2":"Select payment channel",//เลือกช่องทางการชำระเงิน
+     "report_select_3":"Find the machine name",//ค้นหาชื่อเครื่อง
+      "report_select_4":"Find program name",//ค้นหาชื่อโปรแกรม
+     "report_select_5":"Select month",//เลือกเดือน
+    "report_select_6":"Select year",//เลือกปี
+    "report_select_7":"Select transaction type",//เลือกประเภทการทำรายการ
+    "report_select_8":"Find username",//ค้นหาชื่อผู้ใช้
+    "report_select_9":"Find account name",//ค้นหาชื่อบัญชี
+    "report_select_10":"Select transaction status",//เลือกสถานะการทำรายการ
+      "report_select_placeholder_1":"Specify the machine name",//ระบุชื่อเครื่อง
+      "report_select_placeholder_2":"Specify program name",//ระบุชื่อโปรแกรม
+      "report_select_placeholder_3":"Specify username",//ระบุชื่อผู้ใช้
+      "report_select_placeholder_4":"Specify account name",//ระบุชื่อบัญชี
+      "report_export_to_excel":"Export to Excel",//ส่งออกไปยัง Excel
+     "report_time_1":"Select display date",//เลือกวันที่แสดง
+     "report_time_2":"Until the date",//ถึงวันที่
+     "report_table_1":"Date and time of transaction",//วันที่-เวลาที่ทำรายการ
+     "report_table_2":"Transaction Code",//รหัสการทำรายการ	
+     "report_table_3":"Branch where transaction was made",//สาขาที่ทำรายการ	
+     "report_table_4":"Transaction Type",//ประเภทการทำรายการ
+     "report_table_5":"Payment channels",//ช่องทางการชำระเงิน	
+     "report_table_6":"Date of transaction",//วันที่ทำรายการ
+     "report_table_7":"Pay via bank",//ชำระผ่านธนาคาร
+     "report_table_8":"Transaction status",//สถานะการทำรายการ
+     "report_table_select_1":"Does not work properly",//ทำงานไม่สมบูรณ์
+    "report_table_select_2":"Works perfectly",//ทำงานสมบูรณ์
+
+    "user_management":"User Management",//การจัดการผู้ใช้
+    "user_usage_rights":"Usage rights",//สิทธิ์การใช้งาน
+    "user_password":"Password",//รหัสผ่าน
+    "user_user_rights":"User rights",//สิทธิ์ผู้ใช้งาน
+    "user_table_1":"Identity verification status",//สถานะการยืนยันตัวตน	
+    "user_title_1":"Edit user information",//แก้ไขข้อมูลผู้ใช้
+    "user_title_2":"Add user",//เพิ่มผู้ใช้
+    "user_title_3":"Manage Branches",//จัดการสาขา
+    "user_title_4":"Select Manage Branch",//เลือกจัดการสาขา
+
+    "customer_management":"Customer Management",//การจัดการลูกค้า
+    "customer_title_1":"Edit user status",//แก้ไขสถานะผู้ใช้
+    "customer_title_2":"Add customer",//เพิ่มลูกค้า
+    "customer_title_3":"How to Manage Points",//วิธีการจัดการ Point
+    "customer_title_4":"Manage user points",//จัดการ Point ผู้ใช้
+    "customer_title_5":"How to manage Member Card", //วิธีการจัดการ Member Card
+    "customer_title_6":"Amount in Member Card Wallet",//จำนวนเงินในกระเป๋า Member Card
+    "customer_title_7":"Manage user Member Card",//จัดการ Member Card ของผู้ใช้
+    "customer_title_8":"Name and Surname",//ชื่อ-นามสกุล
+    "customer_title_9":"Birthday",//วันเกิด
+    "customer_title_10":"address",//ที่อยู่
+    "customer_title_11":"Created on",//สร้างเมื่อ
+    "customer_select_1":"Select status",  //เลือกสถานะ  
+    "customer_select_2":"Select Gender",//เลือกเพศ
+    "customer_table_1":"Telephone number",//หมายเลขโทรศัพท์
+    "customer_table_2":"Gender",//เพศ
+    "customer_table_3":"Use Points",//การใช้คะแนน
+
+    "chats_title_1":"Direct Messages",//ข้อความส่วนตัว
+    "chats_title_2":"Search messages or users",//ค้นหาข้อความหรือผู้ใช้
+
+    "branch_management":"Branch Management",//การจัดการสาขา
+    "branch_add":"Add branches",//เพิ่มสาขา
+    "branch_edit":"Edit branches",//แก้ไขสาขา
+    "branch_free":"Free",//ฟรี
+    "branch_subscription":"Subscription",//สมัครสมาชิก
+    "branch_title_1":"Select display date",//เลือกวันที่แสดง
+    "branch_title_2":"Select date",//เลือกวันที่
+    "branch_title_3":"Manage banking information",//จัดการข้อมูลธนาคาร
+    "branch_title_4":"Manage online payment information",//จัดการข้อมูลการจ่ายเงินออนไลน์
+    "branch_title_5":"Online Payment Closure Date",//วันปิดการใช้งานจ่ายเงินด้วยออนไลน์
+    "branch_title_6":"Manage member information",//จัดการข้อมูลสมาชิก
+    "branch_title_7":"Membership expiration date",//วันหมดอายุสมาชิก
+    "branch_title_8":"Fix Bank API",//แก้ไข API ธนาคาร
+    "branch_title_9":"Date you want to activate the QR Payment system",//วันที่ต้องการเปิดใช้งานระบบ QR Payment
+    "branch_title_10":"Membership type",//ประเภทสมาชิก
+    "branch_title_11":"Date of membership registration",//วันที่สมัครสมาชิก
+    "branch_title_12":"Bank ppId",//รหัสธนาคาร ppId
+    "branch_title_13":"Branch code",//รหัสสาขา
+    "branch_title_14":"Branch name, street name, province name",//ชื่อสาขา, ชื่อถนน, ชื่อจังหวัด
+    "branch_title_15":"Company name",//ชื่อบริษัท
+    "branch_title_16":"Address for tax invoice issuance",//ที่อยู่สำหรับการออกใบกำกับภาษี
+    "branch_title_17":"Taxpayer Identification Number",//เลขประจำตัวผู้เสียภาษี
+    "branch_title_18":"Contact name or shop owner name",//ชื่อผู้ติดต่อหรือชื่อเจ้าของร้าน
+    "branch_title_19":"Contact number",//เบอร์โทรติดต่อ
+    "branch_title_20":"Biller ID",//รหัสผู้ให้บริการ
+    "branch_title_21":"Account number",//เลขที่บัญชี
+    "branch_title_22":"Bank name",//ชื่อธนาคาร
+    "branch_title_23":"Bank Branch",//สาขาธนาคาร
+    "branch_title_24":"Latitude",//ละติจูด
+    "branch_title_25":"Longitude",//ลองจิจูด
+    "branch_title_26":"Online payment status",//สถานะการชำระเงินออนไลน์
+    "branch_title_27":"Banks used",//ธนาคารที่ใช้
+    "branch_title_28":"Contact name or shop owner name",//ชื่อผู้ติดต่อหรือชื่อเจ้าของร้าน
+    "branch_select_1":"Select a bank",//เลือกธนาคาร
+    "branch_edit_information":"Edit branch information",//แก้ไขข้อมูลสาขา
+
+    "program_management":"Program Management",//การจัดการโปรแกรม
+    "program_add_washing":"Add washing machine program",//เพิ่มโปรแกรมเครื่องซักผ้า
+    "program_add_dryer":"Add dryer program",//เพิ่มโปรแกรมเครื่องอบผ้า
+    "program_title_1":"Select the branch to add the program to.",//เลือกสาขาที่จะเพิ่มโปรแกรม
+    "program_title_2":"Select branch",//เลือกสาขา
+    "program_title_3":"Water temperature",//อุณหภูมิน้ำ
+    "program_title_4":"Temperature",//อุณหภูมิ
+    "program_title_5":"Period",//ระยะเวลา
+    "program_title_6":"minute",//นาที
+    "program_title_7":"Select tank size",//เลือกขนาดถัง
+    "program_title_8":"Delete washing machine program",//ลบโปรแกรมเครื่องซักผ้า
+    "program_title_9":"Delete the dryer program",//ลบโปรแกรมเครื่องอบผ้า
+    "program_title_10":"Edit washing machine program",//แก้ไขโปรแกรมเครื่องซักผ้า
+    "program_title_11":"Edit dryer program",//แก้ไขโปรแกรมเครื่องอบผ้า
+
+    "washing_machine_management":"Washing Machine Management",//การจัดการเครื่องซักผ้า
+    "washing_machine_add":"Add washing machine",//เพิ่มเครื่องซ
+    "washing_machine_edit":"Edit washing machine",//แก้ไขเครื่องซักผ้า
+    "washing_machine_title_1":"Machine type",//ประเภทเครื่อง
+    "washing_machine_title_2":"Machine ID",//ID เครื่อง
+    "washing_machine_title_3":"IOT Device ID",//ID อุปกรณ์ IOT
+    "washing_machine_title_4":"Interval Get Data",//ระยะเวลาการรับข้อมูล
+    "washing_machine_title_5":"Selected Program",//โปรแกรมที่เลือก
+    "washing_machine_title_6":"Select the program",//เลือกโปรแกรมเครื่อง
+    "washing_machine_title_7":"Delete Device",//ลบอุปกรณ์
+    "washing_machine_title_8":"Modify machine status",//แก้ไขสถานะเครื่อง
+    "washing_machine_title_9":"Payment methods",//วิธีการชำระเงิน
+
+    "member_card_management":"Member Card Management",//การจัดการบัตรสมาชิก
+    "member_card_title_1":"Top up",//เติมเงิน
+    "member_card_title_2":"Pay",//จ่าย
+    "member_card_title_3":"Member Card Number",//หมายเลขบัตรสมาชิก
+    "member_card_title_4":"Program",//โปรแกรม
+    "member_card_title_5":"Channel",//ช่องทาง
+    "member_card_title_6":"Code/Reason",//รหัส/เหตุผล
+    "member_card_title_7":"Select item type",//เลือกประเภทรายการ
+
+    "point_redemption_management":"Point & Redemption Management",//การจัดการ Point & Redemption
+    "point_redemption_title_1":"Set membership level",//กำหนดระดับสมาชิก
+    "point_redemption_title_2":"Customer Number",//หมายเลขลูกค้า
+    "point_redemption_title_3":"Number of Points",//จำนวนคะแนน
+    "point_redemption_title_4":"Set points to adjust member level",//กำหนดคะแนนเพื่อปรับระดับสมาชิก
+
+    "promotion_management":"Promotion Management",//การจัดการโปรโมชั่น
+    "promotion_add":"Add promotion",//เพิ่มโปรโมชั่น
+    "promotion_edit":"Edit promotion",//แก้ไขโปรโมชั่น
+    "promotion_title_1":"Promotion name",//ชื่อโปรโมชั่น
+    "promotion_title_2":"Promotion details",//รายละเอียดโปรโมชั่น
+    "promotion_title_3":"Promotion start date",//วันที่เริ่มโปรโมชั่น
+    "promotion_title_4":"Promotion end date",//วันที่สิ้นสุดโปรโมชั่น
+    "promotion_title_5":"Upload Image",//อัพโหลดรูปภาพ
+    "promotion_title_6":"Participating branches",//สาขาที่เข้าร่วม
+    "promotion_title_7":"Promotional images",//รูปภาพโปรโมชั่น
+
+    "code_promotion_management":"Code Promotion Management",//การจัดการโค้ดโปรโมชั่น
+    "code_promotion_add":"Add code promotion",//เพิ่มโค้ดโปรโมชั่น
+    "code_promotion_edit":"Edit code promotion",//แก้ไขโค้ดโปรโมชั่น
+    "code_promotion_title_1":"Discount amount",//จำนวนส่วนลด
+    "code_promotion_title_2":"Limited quantity Code",//จำนวนโค้ดจำกัด
+
+    "language_management":"Language Management",//การจัดการภาษา
+    "language_add":"Add language",//เพิ่มภาษา
+    "language_edit":"Edit language",//แก้ไขภาษา
+    "language_title_1":"Language abbreviations",//ตัวย่อภาษา
+    "language_title_2":"Key",//คีย์
+    "language_title_3":"Value",//ค่า
+
+    "profile_brancn":"Branch Profile",//โปรไฟล์สาขา
+    "profile_edit":"Edit information",//แก้ไขข้อมูล
+    "profile_title_1":"Branch information",//ข้อมูลสาขา
+    "profile_title_2":"Contact Name",//ชื่อผู้ติดต่อ
+    "profile_title_3":"Account Status",//สถานะบัญชี
+    "profile_title_4":"Next membership renewal date",//วันที่ต่ออายุสมาชิกถัดไป
+    "profile_title_5":"Account information",//ข้อมูลบัญชี
+    "profile_title_6":"Change password",//เปลี่ยนรหัสผ่าน
+    "profile_title_7":"New password",//รหัสผ่านใหม่
+    "profile_title_8":"Confirm new password",//ยืนยันรหัสผ่าน
+
+    "alert_1":"Data saved successfully",//บันทึกข้อมูลสำเร็จ
+    "alert_2":"Data saving failed",//บันทึกข้อมูลล้มเหลว
+
+    "log_table_1" : "Day and time",//วัน เวลา
+    "log_table_2" : "Menu",//เมนู
+    "log_table_3" : "Activity",//กิจกรรม
+    "log_table_4" : "Wallet number",//หมายเลข wallet
+    "log_table_5" : "Devices used",//เครื่องที่ใช้
+    "log_table_6" : "Programs used",//โปรแกรมที่ใช้
+    "log_table_7" : "Please select a branch.",//กรุณาเลือกสาขา
+
+    "global_branch_name" : "Branch name",//ชื่อสาขา
+    "global_washing_machine" : "Washing machine",//เครื่องซัก
+    "global_dryer_machine" : "Dryer machine",//เครื่องอบ
+    "global_baht" : "baht",//บาท
+    "global_go_back" : "go back",//กลับ
+    "global_all" : "all",//ทั้งหมด
+    "global_machine_name" : "Machine name",//ชื่อเครื่อง
+    "global_program_name" : "Program name",//ชื่อโปรแกรม
+    "global_amount":"Amount",//จำนวนเงิน	
+    "global_coin":"Coin",//เหรียญ
+    "global_prompt_pay":"PromptPay",//พร้อมเพย์
+    "global_member_card":"Member Card",//บัตรสมาชิก
+    "global_force":"Force",//บังคับ
+    "global_wash":"wash",//ซัก
+    "global_dry":"dry",//อบ
+    "global_username":"Username",//ชื่อผู้ใช้
+    "global_account_name":"Account Name",//ชื่อบัญชี
+    "global_date":"Date",//วันที่
+    "global_email":"Email",//อีเมล
+    "global_status" : "Status", //สถานะ
+    "global_tool" : "Tool", //เครื่องมือ
+    "global_active" : "Active",//ใช้งาน
+    "global_block" : "Block",//บล็อค
+    "global_delete" : "Delete",//ลบ
+    "global_inactive" : "Inactive",//ไม่ใช้งาน
+    "global_confirmed" : "Confirmed",//ยืนยันแล้ว
+    "global_waiting_confirmed" : "Waiting for confirmation",//รอการยืนยัน
+    "global_cancel" : "Cancel",//ยกเลิก
+    "global_save" : "Save",//บันทึก
+    "global_load_more" : "Load More",//โหลดข้อมูลเพิ่ม
+    "global_no_data" : "No data",//ไม่มีข้อมูล
+    "global_add" : "Add",//เพิ่ม
+    "global_point" : "Points",//Point คะแนน
+    "global_remark" : "Remark",//หมายเหตุ
+    "global_man" : "Man",//ชาย
+    "global_female":"Female",//หญิง
+    "global_search" : "Search",//ค้นหา
+    "global_service_type" : "Service type",//ประเภทบริการ
+    "global_province" : "Province",//จังหวัด
+    "global_zip_code" : "Zip code",//รหัสไปรษณีย์
+    "global_usage" : "Usage",//การใช้งาน
+    "global_enabled" : "Enabled",//เปิดการใช้งาน
+    "global_disabled" : "Disabled",//ปิดการใช้งาน
+    "global_close" : "Close",//ปิด
+    "global_tank_size" : "Tank size",//ขนาดถัง
+    "global_price" : "Price",//ราคา
+    "global_size" : "Size",//ขนาด
+    "global_online" : "Online",//ออนไลน์
+    "global_error" : "Error",//ผิดพลาด
+    "global_ready_to_use" : "Ready to use",//พร้อมใช้งาน
+    "global_working" : "working",//กำลังทำงาน
+    "global_system" : "System",//ระบบ
+    "global_admin" : "Admin",//ผู้ดูแลระบบ
+    "global_promtpay" : "Promtpay",//พร้อมเพย์
+    "global_code_promotion" : "Code Promotion",//โค้ดโปรโมชั่น
+    "global_can" : "Can",//ได้
+    "global_cut" : "Cut",//ตัด
+    "global_reason" : "Reason",//เหตุผล
+    "global_expire" : "Expire",//หมดอายุ
+    "global_start_date" : "Start date",//วันที่เริ่ม
+    "global_end_date" : "End date",//วันที่สิ้นสุด
+    "global_code" : "Code",//รหัส
+    "global_transaction_successfully" : "Transaction completed successfully",//ทำรายการสำเร็จ
+    "global_branch" : "Branch" //สาขา
+}

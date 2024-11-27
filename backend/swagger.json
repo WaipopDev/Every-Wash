@@ -1,0 +1,570 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "description": "",
+        "version": "1.0.0",
+        "title": "Image Wash",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "email": ""
+        }
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    },
+    "servers": [
+        {
+            "url": "http://35.187.239.244"
+        },
+        {
+            "url": "http://35.187.239.244"
+        }
+    ],
+    "schemes": [
+        "https",
+        "http"
+    ],
+    "paths": {
+        "/api/program/{IdIOT}": {
+            "get": {
+                "tags": [
+                    "Machine"
+                ],
+                "description": "/api/program/{IdIOT}",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "IdMachine",
+                        "description": "Id Machine",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MessagesResponse"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/machine/{IdIOT}": {
+            "post": {
+                "tags": [
+                    "Machine"
+                ],
+                "description": "/api/machine/{IdIOT}",
+                "consumes": [
+                    "apพplication/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "IdMachine",
+                        "description": "Id Machine",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "status( 1 => ปกติ, 2 => กำลังทำงาน, 3 => error),  priceType( 1 => coin, 2 => promtpay,3 => E-wallet)",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/machine"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "idProgram": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                        },
+                                        "status": {
+                                            "type": "integer"
+                                        },
+                                        "time": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/machine/log/{IdIOT}": {
+            "post": {
+                "tags": [
+                    "Machine"
+                ],
+                "description": "/api/machine/log/{IdIOT}",
+                "consumes": [
+                    "apพplication/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "IdMachine",
+                        "description": "Id Machine",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/machineLog"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "data": {
+                                            "type": "string"
+                                        },
+                                        "timeUpdate": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment/{IdMachine}?amount={value}": {
+            "get": {
+                "tags": [
+                    "Payment"
+                ],
+                "description": "/api/payment/{IdMachine}?amount={value}",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "IdMachine",
+                        "description": "Id Machine",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "amount",
+                        "description": "amount",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MessagesResponsePayment"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment/wallet/{IdMachine}?idProgram={value}": {
+            "get": {
+                "tags": [
+                    "Payment"
+                ],
+                "description": "/api/payment/wallet/{IdMachine}?idProgram={value}",
+                "consumes": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "IdMachine",
+                        "description": "Id Machine",
+                        "required": true
+                    },
+                    {
+                        "in": "path",
+                        "name": "amount",
+                        "description": "amount",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/MessagesResponsePayment"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment/{IdIOT}": {
+            "post": {
+                "tags": [
+                    "Payment"
+                ],
+                "description": "/api/payment/{IdIOT}",
+                "consumes": [
+                    "apพplication/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "IdIOT",
+                        "description": "Id IOT",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/machinePay"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "transactionId": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment/wallet/{IdMachine}": {
+            "post": {
+                "tags": [
+                    "Payment"
+                ],
+                "description": "/api/payment/wallet/{IdMachine}",
+                "consumes": [
+                    "apพplication/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "IdMachine",
+                        "description": "Id Machine",
+                        "required": true
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/machinePay"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "transactionId": {
+                                            "type": "string"
+                                        },
+                                        "status": {
+                                            "type": "integer"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "The user is unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Unauthorized"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "machine": {
+            "type": "object",
+            "properties": {
+                "idProgram": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "status": {
+                    "type": "integer"
+                },
+                "countdownTime": {
+                    "type": "integer"
+                },
+                "priceType": {
+                    "type": "integer"
+                },
+                "errorMsg": {
+                    "type": "string"
+                },
+                "type":{
+                    "type": "integer"
+                },
+                "updateAmount":{
+                    "type": "integer"
+                },
+                "updateTime":{
+                    "type": "integer"
+                },
+                "transactionId":{
+                    "type": "string"
+                }
+            }
+        },
+        "machinePay": {
+            "type": "object",
+            "properties": {
+                "ref1": {
+                    "type": "integer"
+                },
+                "ref2": {
+                    "type": "integer"
+                }
+            }
+        },
+        "machineLog": {
+            "type": "object",
+            "properties": {
+                "deviceID": {
+                    "type": "string"
+                },
+                "timeStamp": {
+                    "type": "string"
+                },
+                "serviceID": {
+                    "type": "string"
+                },
+                "eventID": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "MessagesResponse": {
+                "type": "object",
+                "properties": {
+                    "latitude": {
+                        "type": "integer"
+                    },
+                    "longitude": {
+                        "type": "integer"
+                    },
+                    "idMachine": {
+                        "type": "string"
+                    },
+                    "machineName": {
+                        "type": "string"
+                    },
+                    "intervalTime": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "integer"
+                    },
+                    "program": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string",
+                                    "format": "uuid"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "price": {
+                                    "type": "integer"
+                                },
+                                "status": {
+                                    "type": "integer"
+                                },
+                                "time": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                },
+                "xml": {
+                    "name": "default"
+                }
+            },
+            "Unauthorized": {
+                "type": "object",
+                "properties": {
+                    "error": {
+                        "type": "string"
+                    }
+                }
+            },
+            "MessagesResponsePayment": {
+                "type": "object",
+                "properties": {
+                    "ref1": {
+                        "type": "string"
+                    },
+                    "ref2": {
+                        "type": "string"
+                    },
+                    "qrRawData": {
+                        "type": "string"
+                    }
+                },
+                "xml": {
+                    "name": "default"
+                }
+            }
+        }
+    }
+}

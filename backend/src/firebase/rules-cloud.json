@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /Admin/{document=**} {
+      allow read: if true;
+      allow write: if request.auth != null;
+        }
+    match /Branch/{document=**} {
+        allow read: if true;
+        allow write: if request.auth != null;
+        }
+    match /LogIOTConnect/{document=**} {
+        allow read:if true;
+        allow write:if true;
+        }
+    match /LogMachineIOT/{document=**} {
+        allow read:if true;
+        allow write:if true;
+        }
+    match /LogWashingMachine/{document=**} {
+        allow read:if true;
+        allow write:if true;
+        }
+    match /ProgramClothesDryer/{document=**} {
+        allow read:if true;
+        allow write: if request.auth != null;
+        } 
+    match /ProgramWashingMachine/{document=**} {
+        allow read:if true;
+        allow write: if request.auth != null;
+        }
+    }
+}

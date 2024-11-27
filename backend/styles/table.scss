@@ -1,0 +1,22 @@
+.table {
+    // table-layout:fixed;
+    &.tables-fixed{
+        table-layout:fixed;
+    }
+    .thead-light {
+        th {
+            background-color: #f6f9fc;
+            color: #8898aa;
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #e9ecef;
+            border-color: #e9ecef;
+        }
+    }
+    th,
+    td {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}

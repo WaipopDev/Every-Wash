@@ -1,0 +1,18 @@
+server {
+        listen  443 ssl;
+        listen [::]:443 ssl;
+        include /etc/nginx/sites-available/ssl.conf;
+        root /var/www/html/ImageWash-BE/mail_service;
+        index index.html index.htm index.nginx-debian.html;
+        server_name staging-mail.image-wash.com www.staging-mail.image-wash.com;
+        location / {
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_pass http://127.0.0.1:2525;
+                proxy_http_version 1.1;
+                proxy_ssl_session_reuse off;
+                proxy_set_header Host $http_host;
+                proxy_cache_bypass $http_upgrade;
+                proxy_redirect off;
+        }
+}

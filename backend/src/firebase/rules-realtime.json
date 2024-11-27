@@ -1,0 +1,77 @@
+{
+    "rules": {
+       
+        "AdminLog": {
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "AdminPermission":{
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "Chat":{
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "Point":{
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "Promotion":{
+            ".read": true,
+            ".write": "auth != null"
+        },
+        "WashingMachine": {
+            ".read": true,
+            ".write": true,
+            ".indexOn": [
+                "id",
+                "branch",
+                "ref",
+                "idIOT"
+            ]
+        },
+        "User": {
+            ".read": true,
+            ".write": "auth != null",
+            ".indexOn": [
+                "status",
+                "firstName",
+                "gender",
+                "phoneNumber"
+            ]
+        },
+        "Wallet": {
+            ".read": true,
+            ".write": "auth != null",
+            ".indexOn": [
+                "firstName",
+                "activity"
+            ]
+        },
+        "WalletCallback": {
+            ".read": true,
+            ".write": true,
+            "$date": {
+                "$key": {
+                    ".indexOn": [
+                        "refDefault"
+                    ]
+                }
+            }
+        },
+        "WalletCallbackTest": {
+            ".write": true,
+            "$date": {
+                "$key": {
+                    ".indexOn": [
+                        "refDefault","transactionId"
+                    ]
+                },
+                ".indexOn": [
+                      "refDefault","transactionId"
+                  ]
+            }
+        }
+    }
+}

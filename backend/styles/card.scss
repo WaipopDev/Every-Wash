@@ -1,0 +1,16 @@
+.card-dashboard{
+    .card-title{
+        font-size: 18px;
+    }
+}
+
+.tableNoWrap{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+.card-content-center{
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
