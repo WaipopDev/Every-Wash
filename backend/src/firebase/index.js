@@ -1,18 +1,17 @@
-import firebase from 'firebase/app'
-import 'firebase/auth'
-import 'firebase/database'
-import 'firebase/firestore'
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth'
+import { getFirestore } from 'firebase/firestore';
+import { getDatabase } from 'firebase/database'
 
 import config from './config'
 import * as Firestore from './firestore'
 import * as Database from './database'
 import * as Storage from './storage'
-if (!firebase.apps.length) {
-  firebase.initializeApp(config)
-}
 
-const Auth = firebase.auth()
-const DatabaseRef = firebase.database()
+const firebaseApp = getApps().length ? getApp() : initializeApp(config);
+
+const Auth = getAuth(firebaseApp)
+const DatabaseRef = getDatabase(firebaseApp)
 // const Firestore = firebase.firestore()
 
 

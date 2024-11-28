@@ -1,21 +1,22 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
-import 'firebase/database'
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
+import { getDatabase, ref, set, push, get, child, update, query, orderByChild, equalTo, startAt, endAt, limitToFirst, limitToLast, onChildChanged, off } from 'firebase/database'
 import config from './config'
 import moment from 'moment'
 import _ from 'lodash'
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(config)
-}
-const Firestore = firebase.firestore()
-const Database = firebase.database()
+const firebaseApp = getApps().length ? getApp() : initializeApp(config);
+
+
+const Firestore = getFirestore(firebaseApp);
+const Database = getDatabase(firebaseApp)
 
 export const dataBaseFn = () => {
     return Database
 }
 export const WashingMachine = () => {
-    return Database.ref(`/WashingMachine`)
+    return ref(Database, `/WashingMachine`)
+    // return Database.ref(`/WashingMachine`)
 }
 export const Customer = () => {
     return Database.ref(`/User`)
@@ -44,13 +45,20 @@ export const WashingMachineAdd = (param) => {
 }
 
 export const WashingMachineGetAll = () => {
-    return WashingMachine().orderByChild('statusActive').equalTo('ACTIVE').once('value')
+    const washingMachineRef = WashingMachine();
+    const washingMachineQuery = query(washingMachineRef, orderByChild('statusActive'), equalTo('ACTIVE'));
+    return get(washingMachineQuery);
+    // return WashingMachine().orderByChild('statusActive').equalTo('ACTIVE').once('value')
 }
 export const WashingMachineGetOnAll = (callback) => {
-    return WashingMachine().on('child_changed',callback)
+    const washingMachineRef = WashingMachine();
+    return onChildChanged(washingMachineRef, callback);
+    // return WashingMachine().on('child_changed',callback)
 }
 export const UnsubWashingMachineGetOnAll = (callback) => {
-    return WashingMachine().off()
+    const washingMachineRef = WashingMachine();
+    return off(washingMachineRef);
+    // return WashingMachine().off()
     // return WashingMachine().off('child_changed',callback)
 }
 
@@ -170,7 +178,10 @@ export const AdminLog = (id, param) => {
         menu: param.menu,
         activity: param.activity
     }
-    return Database.ref(`/AdminLog/${id}/${moment().format('YYYY-MM-DD')}/`).push().set(params)
+    const logRef = ref(Database, `/AdminLog/${id}/${moment().format('YYYY-MM-DD')}/`);
+    const newLogRef = push(logRef);
+    return set(newLogRef, params);
+    // return Database.ref(`/AdminLog/${id}/${moment().format('YYYY-MM-DD')}/`).push().set(params)
 }
 
 export const AdminLogGet = (id, date) => {
@@ -573,7 +584,8 @@ export const CustomerGetByPhone = (value) => {
     return Customer().orderByChild('phoneNumber').equalTo(value).once('value')
 }
 export const DashboardGetAllData = async (branch) => {
-    return Database.ref(`/Dashboard/${branch}`).once('value')
+    return get(ref(Database, `/Dashboard/${branch}`));
+    // return Database.ref(`/Dashboard/${branch}`).once('value')
 }
 
 export const DashboardGetOnAllData = async (branch,callback) => {
@@ -795,7 +807,9 @@ export const MachineUpdateConnect = (key, param) => {
 }
 
 export const AdminPermissionGet = (key) => {
-    return Database.ref(`/AdminPermission/${key}`).once('value')
+    const detailRef = ref(Database, `/AdminPermission/${key}/`);
+    return get(detailRef);
+    // return Database.ref(`/AdminPermission/${key}`).once('value')
 }
 
 export const AdminPermissionSet = (key, param) => {
@@ -852,43 +866,99 @@ export const getUserByPhone = (phoneNumber) => {
 }
 
 export const AdminForceGet = () => {
-    return Database.ref(`/AdminForce`).once('value')
+    const adminForceRef = ref(Database, `/AdminForce`);
+    return get(adminForceRef);
 }
 
 export const GetDataUser = () => {
     return Customer().once('value')
 }
 
+
+// 1. PointRedemtionGetCheckTransaction
 export const PointRedemtionGetCheckTransaction = (value) => {
-    return Database.ref(`/PointAndRedemtion/${moment().format('YYYY-MM-DD')}`).orderByChild('transactionId').equalTo(value).once('value')
-}
+    const transactionRef = ref(Database, `/PointAndRedemtion/${moment().format('YYYY-MM-DD')}`);
+    const transactionQuery = query(transactionRef, orderByChild('transactionId'), equalTo(value));
+    return get(transactionQuery);
+};
 
+// 2. GetTokenKL
 export const GetTokenKL = async () => {
-    return Database.ref(`/TokenKL`).once('value')
- }
+    const tokenRef = ref(Database, `/TokenKL`);
+    return get(tokenRef);
+};
 
- export const AddTokenKL = async (param) => {
-    return Database.ref(`/TokenKL`).set(param)
- }
+// 3. AddTokenKL
+export const AddTokenKL = async (param) => {
+    const tokenRef = ref(Database, `/TokenKL`);
+    return set(tokenRef, param);
+};
 
-export const AddLanguage = async (key,param) => {
-    await Database.ref(`/Language/${key}/`).set(param)
-    await Database.ref(`/Language/Version/`).set(moment().unix())
-    return await Database.ref(`/Language/list/${key}`).set(key)
-}
+// 4. AddLanguage
+export const AddLanguage = async (key, param) => {
+    const languageRef = ref(Database, `/Language/${key}/`);
+    const versionRef = ref(Database, `/Language/Version/`);
+    const listRef = ref(Database, `/Language/list/${key}`);
+    
+    await set(languageRef, param);
+    await set(versionRef, moment().unix());
+    return set(listRef, key);
+};
 
+// 5. GetListLanguage
 export const GetListLanguage = async () => {
-    return await Database.ref(`/Language/list/`).once('value')
-}
+    const listRef = ref(Database, `/Language/list/`);
+    return get(listRef);
+};
 
+// 6. GetDetailLanguage
 export const GetDetailLanguage = async (key) => {
-    return await Database.ref(`/Language/${key}/`).once('value')
-}
+    const detailRef = ref(Database, `/Language/${key}/`);
+    return get(detailRef);
+};
 
+// 7. GetAllLanguage
 export const GetAllLanguage = async () => {
-    return await Database.ref(`/Language/`).once('value')
-}
+    const allLanguageRef = ref(Database, `/Language/`);
+    return get(allLanguageRef);
+};
 
-export const UpdateDetailLanguage = async (key,param) => {
-    return await Database.ref(`/Language/${key}/`).set(param)
-}
+// 8. UpdateDetailLanguage
+export const UpdateDetailLanguage = async (key, param) => {
+    const detailRef = ref(Database, `/Language/${key}/`);
+    return set(detailRef, param);
+};
+
+// export const PointRedemtionGetCheckTransaction = (value) => {
+//     return Database.ref(`/PointAndRedemtion/${moment().format('YYYY-MM-DD')}`).orderByChild('transactionId').equalTo(value).once('value')
+// }
+
+// export const GetTokenKL = async () => {
+//     return Database.ref(`/TokenKL`).once('value')
+//  }
+
+//  export const AddTokenKL = async (param) => {
+//     return Database.ref(`/TokenKL`).set(param)
+//  }
+
+// export const AddLanguage = async (key,param) => {
+//     await Database.ref(`/Language/${key}/`).set(param)
+//     await Database.ref(`/Language/Version/`).set(moment().unix())
+//     return await Database.ref(`/Language/list/${key}`).set(key)
+// }
+
+// export const GetListLanguage = async () => {
+//     return await Database.ref(`/Language/list/`).once('value')
+// }
+
+// export const GetDetailLanguage = async (key) => {
+//     return await Database.ref(`/Language/${key}/`).once('value')
+// }
+
+// export const GetAllLanguage = async () => {
+//     return await Database.ref(`/Language/`).once('value')
+// }
+
+// export const UpdateDetailLanguage = async (key,param) => {
+//     return await Database.ref(`/Language/${key}/`).set(param)
+// }

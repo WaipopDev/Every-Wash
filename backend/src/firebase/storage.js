@@ -1,11 +1,10 @@
-import firebase from 'firebase/app'
-import 'firebase/storage'
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import  { getStorage } from 'firebase/storage'
 import config from './config'
-if (!firebase.apps.length) {
-    firebase.initializeApp(config)
-}
 
-const Storage = firebase.storage()
+const firebaseApp = getApps().length ? getApp() : initializeApp(config);
+
+const Storage = getStorage(firebaseApp)
 
 export const Promotion = () => {
     return Storage.ref(`promotion`)

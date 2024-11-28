@@ -1,23 +1,29 @@
-import firebase from 'firebase/app'
-import 'firebase/firestore'
+import { initializeApp, getApps, getApp } from 'firebase/app';
+import { getFirestore, collection, query, where, getDocs, updateDoc, doc } from 'firebase/firestore';
 import config from './config'
 import moment from 'moment'
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(config)
-}
-const Firestore = firebase.firestore()
+const firebaseApp = getApps().length ? getApp() : initializeApp(config);
+
+// Initialize Firestore
+const Firestore = getFirestore(firebaseApp);
 
 export const dataBaseFn = () =>{
     return Firestore
 }
 export const Admin = () => {
-    return Firestore.collection('Admin')
+    return collection(Firestore, 'Admin');
 }
 
-export const AdminGet = (id) => {
-    return Admin().where('uid', '==', id).get()
-}
+// export const AdminGet = (id) => {
+//     return Admin().where('uid', '==', id).get()
+// }
+// Query Admin by UID
+export const AdminGet = async (id) => {
+    const adminQuery = query(Admin(), where('uid', '==', id));
+    return await getDocs(adminQuery);
+};
+
 export const AdminGetByChild = (child, value) => {
     return Admin().where(child, '==', value).get()
 }
@@ -32,7 +38,9 @@ export const AdminGetAll = () => {
 }
 
 export const AdminUpdate = (id, param) => {
-    return Admin().doc(id).update(param)
+    const adminDocRef = doc(Admin(), id);
+    return updateDoc(adminDocRef, param);
+    // return Admin().doc(id).update(param)
 }
 
 export const ProgramWashingMachine = () => {
@@ -58,10 +66,13 @@ export const ProgramClothesDryerUpdate = (id, param) => {
 
 
 export const Branch = () => {
-    return Firestore.collection('Branch')
+    return collection(Firestore, 'Branch');
+    // return Firestore.collection('Branch')
 }
-export const BranchGet = () => {
-    return Branch().get()
+export const BranchGet = async () => {
+    const branchCollection = Branch();
+    return await getDocs(branchCollection);
+    // return Branch().get()
 }
 export const BranchUpdate = (id, param) => {
     return Branch().doc(id).update(param)
