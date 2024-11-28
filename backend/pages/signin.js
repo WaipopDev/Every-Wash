@@ -45,6 +45,7 @@ export const SignIn = (props) => {
             setPanding(false)
             redirectUser('/dashboard')
         } catch (error) {
+            console.log("🚀 ~ login ~ error:", error)
             setMessageError(error.message)
             setPanding(false)
         }
@@ -156,13 +157,13 @@ export const SignIn = (props) => {
         <Container className="signin">
             <Row className="justify-content-md-center">
                 <Col xs="6" lg="6">
-                    <Image alt={'logo'} className="navbar-brand-img" src={require('../public/img/brand/logo-1@2x.png')} />
+                    {/* <Image alt={'logo'} className="navbar-brand-img" src={require('../public/img/brand/logo-1@2x.png')} /> */}
                 </Col>
             </Row>
             <Row className="justify-content-md-center text-center py-4">
                 <Col>
                     <h2 className="font-weight-bold">Sign in</h2>
-                    <p className="m-0">Sign in to continue to Image Wash</p>
+                    <p className="m-0">Sign in to continue to Every Wash</p>
                 </Col>
             </Row>
             <Row>
