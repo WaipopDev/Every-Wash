@@ -163,7 +163,7 @@ export const SignIn = (props) => {
             <Row className="justify-content-md-center text-center py-4">
                 <Col>
                     <h2 className="font-weight-bold">Sign in</h2>
-                    <p className="m-0">Sign in to continue to Every Wash</p>
+                    <p className="m-0">Sign in to continue to Ever Wash System</p>
                 </Col>
             </Row>
             <Row>
