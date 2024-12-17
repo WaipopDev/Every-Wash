@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import Image from "next/image"
-import { Auth, Firestore, Database } from '../src/firebase'
+import { Auth, Firestore, Database, signInWithEmailAndPassword } from '../src/firebase'
 import { redirectUser, reponseFirestore, reponseDatabase } from '../src/utils/helpers'
 import {
     Container,
@@ -41,7 +41,7 @@ export const SignIn = (props) => {
     const login = async (mail, pass) => {
         try {
             setPanding(true)
-            await Auth.signInWithEmailAndPassword(mail, pass)
+            await signInWithEmailAndPassword(Auth, mail, pass)
             setPanding(false)
             redirectUser('/dashboard')
         } catch (error) {

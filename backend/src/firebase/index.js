@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore';
 import { getDatabase } from 'firebase/database'
 
@@ -20,5 +20,6 @@ export {
   Database,
   Firestore,
   Storage,
-  DatabaseRef
+  DatabaseRef,
+  signInWithEmailAndPassword
 }

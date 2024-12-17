@@ -67,7 +67,8 @@ const Sidebar = (props) => {
         >
             <Container>
                 <Navbar.Brand className="pt-0">
-                    <Image alt={'logo'} className="navbar-brand-img" src={require('../../../public/img/brand/logo-1@2x.png')} />
+                    <h3>Every Wash</h3>
+                    {/* <Image alt={'logo'} className="navbar-brand-img" src={require('../../../public/img/brand/logo-1@2x.png')} /> */}
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
@@ -75,7 +76,7 @@ const Sidebar = (props) => {
                         {createLinks(routes)}
                     </Nav>
                 </Navbar.Collapse>
-                <p>V 1.2.22</p>
+                <p>V 1.0.0</p>
             </Container>
 
         </Navbar>
