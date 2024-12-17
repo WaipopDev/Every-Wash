@@ -67,7 +67,7 @@ const Sidebar = (props) => {
         >
             <Container>
                 <Navbar.Brand className="pt-0">
-                    <h4>Ever Wash System</h4>
+                    <h3>Ever Wash</h3>
                     {/* <Image alt={'logo'} className="navbar-brand-img" src={require('../../../public/img/brand/logo-1@2x.png')} /> */}
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />

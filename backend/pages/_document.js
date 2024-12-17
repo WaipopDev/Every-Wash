@@ -6,10 +6,10 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <title>Smart Image Wash Laundromat System</title>
+          <title>Ever Wash System</title>
           <meta charSet="utf-8" />
-          <meta name="keywords" content="Smart Image Wash Laundromat System"></meta>
-          <meta name="description" content="Smart Image Wash Laundromat System"></meta>
+          <meta name="keywords" content="Ever Wash System"></meta>
+          <meta name="description" content="Ever Wash System"></meta>
           <meta name="theme-color" content="#000000" />
           {/* <link rel="icon" href="/favicon.ico" /> */}
 
