@@ -38,20 +38,28 @@ export const WashingMachine = (props) => {
     const [sizeList2, setSizeList2]                     = useState([])
     const [branchActive, setBranchActive]               = useState('')
 
-    useEffect(async () => {
+    const fnGetProgramWashingMachine = async () => {
+        const res = await programWashingMachine
+            setSizeList1(Object.keys(_.groupBy(res,'size')))
+            setWashingMachine(_.sortBy(res,['size','name']))
+    }
+
+    const fnProgramClothesDryer = async () => {
+        const res = await programClothesDryer
+        setSizeList2(Object.keys(_.groupBy(res,'size')))
+        setClothesDryer(_.sortBy(res,['size','name']))
+    }
+
+    useEffect(() => {
    
         if (branchData.length) {
             setBranch(branchData)
         }
         if (_.isFunction(programWashingMachine.then)) {
-            const res = await programWashingMachine
-            setSizeList1(Object.keys(_.groupBy(res,'size')))
-            setWashingMachine(_.sortBy(res,['size','name']))
+            fnGetProgramWashingMachine()
         }
         if (_.isFunction(programClothesDryer.then)) {
-            const res = await programClothesDryer
-            setSizeList2(Object.keys(_.groupBy(res,'size')))
-            setClothesDryer(_.sortBy(res,['size','name']))
+            fnProgramClothesDryer()
         }
     }, [branchData, programWashingMachine, programClothesDryer])
     //    const a = _.replace('58990950WL4000WLPAYWALLET58990950WLT1632985271',new RegExp("0WL","g"),'-')

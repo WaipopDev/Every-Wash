@@ -107,16 +107,24 @@ export const TabProgram = (props) => {
 
     const refForm = createRef()
 
-    useEffect(async () => {
-        if (_.isFunction(programWashingMachine.then)) {
-            const res = await programWashingMachine
+    const fnGetProgramWashingMachine = async () => {
+        const res = await programWashingMachine
             setSizeList1(Object.keys(_.groupBy(res, (e)=> {return e.size;})))
             setWashingMachine(_.sortBy(res, ['size', 'name']))
+    }
+
+    const fnProgramClothesDryer = async () => {
+        const res = await programClothesDryer
+        setSizeList2(Object.keys(_.groupBy(res, (e)=> {return e.size;})))
+        setClothesDryer(_.sortBy(res, ['size', 'name']))
+    }
+
+    useEffect(() => {
+        if (_.isFunction(programWashingMachine.then)) {
+            fnGetProgramWashingMachine()
         }
         if (_.isFunction(programClothesDryer.then)) {
-            const res = await programClothesDryer
-            setSizeList2(Object.keys(_.groupBy(res, (e)=> {return e.size;})))
-            setClothesDryer(_.sortBy(res, ['size', 'name']))
+            fnProgramClothesDryer()
         }
     }, [programWashingMachine, programClothesDryer])
 

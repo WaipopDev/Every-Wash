@@ -86,8 +86,8 @@ export const SignIn = (props) => {
         setConfigModal((oldData) => ({
             ...oldData,
             title: 'Verify Identity Account',
-            successMsg:'',
-            errorMsg:'',
+            successMsg: '',
+            errorMsg: '',
             pending: false
         }))
         setIsActive({ dataAvtive: {}, listItem: param })
@@ -106,33 +106,33 @@ export const SignIn = (props) => {
 
             if (data.length) {
                 const dataItem = data[0]
-             
+
                 const response = await Auth.createUserWithEmailAndPassword(email, password)
-               
+
                 // const user = response.user;
                 // console.log("🚀 ~ file: signin.js:109 ~ handleSubmitVerify ~ user:", user)
                 // await user.sendEmailVerification()
                 // setTimeout(async ()=>{
-                    await axios.post(`${process.env.sendMail}/send-verification-email`, {
-                        "userEmail": response.user.email,
-                        "redirectUrl": `https://${window.location.host}/check_mail_verify?email=${response.user.email}`
-                    })
-                    const resAdminPermission = await Database.AdminPermissionGet(dataItem.uid)
-    
-                    await Database.AdminPermissionSet(response.user.uid, resAdminPermission.val())
-                    await Database.AdminPermissionDelete(dataItem.uid)
-                    const param = {
-                        password: null,
-                        uid: response.user.uid
-                    }
-                    await Firestore.AdminUpdate(dataItem.docId, param)
-                    await Auth.signOut()
-                    setConfigModal((oldData) => ({
-                        ...oldData,
-                        successMsg: 'ทำรายการสำเร็จ โปรดยืนยันอีเมลเพื่อทำการ เข้าใช้ระบบ',
-                        // errorMsg:'',
-                        pending: false
-                    }))
+                await axios.post(`${process.env.sendMail}/send-verification-email`, {
+                    "userEmail": response.user.email,
+                    "redirectUrl": `https://${window.location.host}/check_mail_verify?email=${response.user.email}`
+                })
+                const resAdminPermission = await Database.AdminPermissionGet(dataItem.uid)
+
+                await Database.AdminPermissionSet(response.user.uid, resAdminPermission.val())
+                await Database.AdminPermissionDelete(dataItem.uid)
+                const param = {
+                    password: null,
+                    uid: response.user.uid
+                }
+                await Firestore.AdminUpdate(dataItem.docId, param)
+                await Auth.signOut()
+                setConfigModal((oldData) => ({
+                    ...oldData,
+                    successMsg: 'ทำรายการสำเร็จ โปรดยืนยันอีเมลเพื่อทำการ เข้าใช้ระบบ',
+                    // errorMsg:'',
+                    pending: false
+                }))
                 // },1000)
             } else {
                 setConfigModal((oldData) => ({
@@ -156,9 +156,7 @@ export const SignIn = (props) => {
     return (
         <Container className="signin">
             <Row className="justify-content-md-center">
-                <Col xs="6" lg="6">
-                    {/* <Image alt={'logo'} className="navbar-brand-img" src={require('../public/img/brand/logo-1@2x.png')} /> */}
-                </Col>
+                <Image alt={'logo'} className="navbar-brand-img" src={require('../public/img/brand/Every-Wash-Logo.png')} width={250} />
             </Row>
             <Row className="justify-content-md-center text-center py-4">
                 <Col>

@@ -140,9 +140,9 @@ export const ListAdmin = (props) => {
                 })
                 if (!isEmail) {
                     // const response = await Auth.createUserWithEmailAndPassword(form['email'].value, form['password'].value)
-                    const keyTest = Firestore.AdminGetKey()
-         
-                    await Firestore.Admin().add({
+                    const keyTest = await Firestore.AdminGetKey()
+          
+                    await Firestore.AdminAdd({
                         uid: keyTest.id,
                         email: form['email'].value,
                         status: 1,
@@ -155,7 +155,21 @@ export const ListAdmin = (props) => {
                         modifyBy: '',
                         lastLogin: '',
                         password: form['password'].value
-                    });
+                    })
+                    // await Firestore.Admin().add({
+                    //     uid: keyTest.id,
+                    //     email: form['email'].value,
+                    //     status: 1,
+                    //     token: '',
+                    //     name: form['name'].value,
+                    //     type: Number(form['typeUser'].value),
+                    //     photo: '',
+                    //     createAt: moment().unix(),
+                    //     modifyAt: '',
+                    //     modifyBy: '',
+                    //     lastLogin: '',
+                    //     password: form['password'].value
+                    // });
                     await Database.AdminPermissionSet(keyTest.id, branchCheck)
                     await getAdminAll()
                     AddLogAdmin(userData, 'User', `Add User : ${form['name'].value}`)

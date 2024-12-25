@@ -1677,7 +1677,7 @@ export const Dashboard = props => {
 
           </Row>
         }
-        {userData.type < 3 && (
+        {/* {userData.type < 3 && (
           <Row className='py-md-4'>
             {item3.map((res, index) => {
               return (
@@ -1705,7 +1705,7 @@ export const Dashboard = props => {
               )
             })}
           </Row>
-        )}
+        )} */}
         {userData.type < 3 && (
           <Row className='py-md-4'>
             <Col md={6}>

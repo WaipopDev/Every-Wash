@@ -19,15 +19,21 @@ export const LogAdmin = (props) => {
     const [lastKey, setLastKey] = useState('')
     const [startDate, setStartDate] = useState(new Date());
 
-    useEffect(async () => {
+    const fetchDataLog = async () => {
         const res = await Database.AdminLogGet(data.docId, moment(startDate).format('YYYY-MM-DD'))
+   
         let val = reverseObject(res.val())
         if (val.length) {
             setLastKey(val[val.length - 1].docId)
             val.splice(-1)
             setListLog(val)
         }
+    }
+
+    useEffect(() => {
+        fetchDataLog()
     }, [data, startDate])
+
     const loadNewPage = async () => {
         const res = await Database.AdminLogLoadGet(data.docId, moment(startDate).format('YYYY-MM-DD'), lastKey)
         let val = reverseObject(res.val())

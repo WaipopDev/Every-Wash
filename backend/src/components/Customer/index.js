@@ -51,21 +51,6 @@ export const index = (props) => {
     const fromRefPhone = createRef()
 
     useEffect(() => {
-        // const ref = firebase.database().ref("items").orderByKey().limitToFirst(PAGE_SIZE);
-        // ref.on("value", (snapshot) => {
-        //   const data = snapshot.val();
-        //   if (data) {
-        //     const firstKey = Object.keys(data)[0];
-        //     setItems(Object.values(data));
-        //     setLastKey(firstKey);
-        //   }
-        // });
-        // getDataUser()
-        return () => {
-        //   ref.off();
-        };
-      }, []);
-    useEffect(async () => {
         getCustomerFilter(type, gender, firstName)
         // getDataUserFilter(type, gender, firstName, phone)
     }, [type, gender, firstName, phone])

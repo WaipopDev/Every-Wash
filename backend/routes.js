@@ -29,13 +29,13 @@ var routes = [
     permission:[1]
   },
  
-  {
-    path: "/chats",
-    name: "menu_chats",
-    icon: "fas fa-comments",
-    group:2,
-    permission:[1]
-  },
+  // {
+  //   path: "/chats",
+  //   name: "menu_chats",
+  //   icon: "fas fa-comments",
+  //   group:2,
+  //   permission:[1]
+  // },
  
   {
     path: "/branch",
@@ -58,13 +58,13 @@ var routes = [
     group:3,
     permission:[1,2,3]
   },
-  {
-    path: "/wallet",
-    name: "menu_wallet",
-    icon: "fas fa-wallet",
-    group:4,
-    permission:[1,2]
-  },
+  // {
+  //   path: "/wallet",
+  //   name: "menu_wallet",
+  //   icon: "fas fa-wallet",
+  //   group:4,
+  //   permission:[1,2]
+  // },
   // {
   //   path: "/promptpay",
   //   name: "Promptpay",
@@ -79,20 +79,20 @@ var routes = [
     group:4,
     permission:[1]
   },
-  {
-    path: "/promotion",
-    name: "menu_promotion",
-    icon: "fas fa-comment-dollar",
-    group:4,
-    permission:[1,2]
-  },
-  {
-    path: "/code_promotion",
-    name: "menu_code_promotion",
-    icon: "fas fa-money-bill-alt",
-    group:4,
-    permission:[1,2]
-  },
+  // {
+  //   path: "/promotion",
+  //   name: "menu_promotion",
+  //   icon: "fas fa-comment-dollar",
+  //   group:4,
+  //   permission:[1,2]
+  // },
+  // {
+  //   path: "/code_promotion",
+  //   name: "menu_code_promotion",
+  //   icon: "fas fa-money-bill-alt",
+  //   group:4,
+  //   permission:[1,2]
+  // },
   {
     path: "/set_language",
     name: "menu_set_language",
