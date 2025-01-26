@@ -9,7 +9,7 @@ import _ from 'lodash'
 import moment from 'moment'
 
 export const LietBranch = (props) => {
-    const { branchData, onEdit, onEditBank, onEditExpire, onPay, onBankSelect, language } = props
+    const { branchData, onEdit, onEditBank, onEditExpire, onPay, onBankSelect, language, handleDelete } = props
     const [branch, setBranch] = useState([])
     useEffect(() => {
         if (branchData.length) {
@@ -90,6 +90,9 @@ export const LietBranch = (props) => {
                                     </Button>
                                     <Button variant="link" className="px-2 py-0 btn" onClick={(e) => onPay(res)}>
                                         <i className="fas fa-comment-dollar"></i>
+                                    </Button>
+                                    <Button variant="link" className="px-2 py-0 btn-expire" onClick={(e) => handleDelete(res)}>
+                                        <i className="fas  fa-trash"></i>
                                     </Button>
                                 </td>
                             </tr>

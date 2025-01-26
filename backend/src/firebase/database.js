@@ -1,6 +1,6 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getDatabase, ref, set, push, get, child, update, query, orderByChild, equalTo, startAt, endAt, limitToFirst, limitToLast, onChildChanged, off, orderByKey } from 'firebase/database'
+import { getDatabase, ref, set, push, get, child, update, query, orderByChild, equalTo, startAt, endAt, limitToFirst, limitToLast, onChildChanged, off, orderByKey, remove } from 'firebase/database'
 import config from './config'
 import moment from 'moment'
 import _ from 'lodash'
@@ -1246,6 +1246,10 @@ export const UpdateDetailLanguage = async (key, param) => {
     const detailRef = ref(Database, `/Language/${key}/`);
     return await set(detailRef, param);
 };
+
+export const RemoveDashboardBranch = async (branch) => {
+    return await remove(ref(Database, `/Dashboard/${branch}`));
+}
 
 // export const PointRedemtionGetCheckTransaction = (value) => {
 //     return Database.ref(`/PointAndRedemtion/${moment().format('YYYY-MM-DD')}`).orderByChild('transactionId').equalTo(value).once('value')

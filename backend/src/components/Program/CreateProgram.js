@@ -43,7 +43,7 @@ export const CreateProgram = (props) => {
 
             if (form.checkValidity() === true) {
                 if (show.type === 1) {
-                    await Firestore.ProgramWashingMachine().add({
+                    const param ={
                         status          : 1,
                         name            : form['name'].value,
                         size            : form['size'].value,
@@ -55,11 +55,12 @@ export const CreateProgram = (props) => {
                         modifyBy        : '',
                         waterTemperature: form['waterTemperature'].value,
                         branch          : form['branch'].value
-                    })
+                    }
+                    await Firestore.AddProgramWashingMachine(param)
                     await getProgramWashingMachine()
                     handleClose()
                 } else if (show.type === 2) {
-                    await Firestore.ProgramClothesDryer().add({
+                    const param ={
                         status          : 1,
                         name            : form['name'].value,
                         size            : form['size'].value,
@@ -71,7 +72,8 @@ export const CreateProgram = (props) => {
                         modifyBy        : '',
                         waterTemperature: form['waterTemperature'].value,
                         branch          : form['branch'].value
-                    })
+                    }
+                    await Firestore.AddProgramClothesDryer(param)
                     await getProgramClothesDryer()
                     handleClose()
                 }

@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, collection, query, where, getDocs, updateDoc, doc, addDoc } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, updateDoc, doc, addDoc, deleteDoc } from 'firebase/firestore';
 import config from './config'
 import moment from 'moment'
 
@@ -319,3 +319,28 @@ export const DashboardGetItem6 = async () => {
     // return Firestore.collection(`/LogWashingMachine`).where('createAt','>=',startTime).where('createAt','<=',endTime).get()
  }
  
+
+ export const AddNewBranch = async (param) => {
+    const branchCollection = collection(Firestore, 'Branch');
+    return await addDoc(branchCollection, param);
+ }
+
+ export const GetTotalBranch = async () => {
+    const branchCollection = collection(Firestore, 'Branch');
+    return await getDocs(branchCollection);
+ }
+
+ export const DeleteBranch = async (id) => {
+    const branchDocRef = doc(Firestore, 'Branch', id);
+    return await deleteDoc(branchDocRef);
+ }
+
+ export const AddProgramWashingMachine = async (param) => {
+    const programWashingMachineCollection = collection(Firestore, 'ProgramWashingMachine');
+    return await addDoc(programWashingMachineCollection, param);
+ }
+
+ export const AddProgramClothesDryer = async (param) => {
+    const programClothesDryerCollection = collection(Firestore, 'ProgramClothesDryer');
+    return await addDoc(programClothesDryerCollection, param);
+ }

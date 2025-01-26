@@ -130,7 +130,7 @@ export const Dashboard = props => {
 
   useEffect(() => {
 
-    // getDataDashboard(branch)
+
     getDataDashboard(branch)
     // forceDataDashboardTotalBranch()
     // forceDataDashboardMachine()
@@ -185,21 +185,6 @@ export const Dashboard = props => {
     }
 
     
-    // const resWM = await Database.WashingMachineGetAll()
-    // _.map(resWM.val(),async (item,key)=>{
-    //   item.key = key
-    //   if(item.status == 99){
-    //     await Database.WashingMachineUpdateByKey(key,{statusActive:'DELETE'})
-        
-    //   }else{
-    //     await Database.WashingMachineUpdateByKey(key,{statusActive:'ACTIVE'})
-    //   }
-    // })
-    
-    // setMachine(_.groupBy(resWM.val(),'branch'))
-    // let resAll = await Database.DashboardGetAllData('all')
-    // let resAllBranch = await Database.DashboardGetAllData(item.branch)
-          // resAll     = resAll.val()
 
     const dayNow        = moment().format('YYYY-MM-DD')
     const dayNowOld     = moment().subtract(1,'day').format('YYYY-MM-DD')
@@ -214,10 +199,7 @@ export const Dashboard = props => {
     const keyYYYYOld    = moment().subtract(1,'year').format('YYYY')
     const keyMM         = moment().format('MM')
 
-    // await Database.DashboardSetData('all', param)
-    // resAllBranch = resAllBranch.val()
-    // const resItem1        = await Database.DashboardGetItem1()
-    // console.log('res.val()', resItem1)
+
 
     if (res && res.val()) {
       const item = res.val()
@@ -246,17 +228,23 @@ export const Dashboard = props => {
       setUpdateTime(moment(item.updateTime * 1000).format('DD/MM/YYYY HH:mm'))
       setTotalDay(item.newTotal24?.[dayNow] || 0)
 
-      dailyCumulativeFn(item.newDaily?.[dayNow] || null) //สรุปการใช้บริการร้านสะดวกซักสะสมรายวัน
-      dailySalesFn(item.newDaily?.[dayNow] || null,item.newDaily?.[dayNowOld] || null) //สรุปรายได้/ยอดขายรายวัน
-      
-      weeklySalesFn(item.newWeekly?.[keyYYYY]?.[keyWeeks] || null,item.newWeekly?.[keyYYYY]?.[keyWeeksOld] || null) //สรุปรายได้/ยอดขายรายสัปดาห์
-      weeklyCumulativeFn(item.newWeekly?.[keyYYYY]?.[keyWeeks] || null) //สรุปการใช้บริการร้านสะดวกซักสะสมรายสัปดาห์
+      if(item.newDaily){
+        dailyCumulativeFn(item.newDaily?.[dayNow] || null) //สรุปการใช้บริการร้านสะดวกซักสะสมรายวัน
+        dailySalesFn(item.newDaily?.[dayNow] || null,item.newDaily?.[dayNowOld] || null) //สรุปรายได้/ยอดขายรายวัน
+      }
+      if(item.newWeekly){
+        weeklySalesFn(item.newWeekly?.[keyYYYY]?.[keyWeeks] || null,item.newWeekly?.[keyYYYY]?.[keyWeeksOld] || null) //สรุปรายได้/ยอดขายรายสัปดาห์
+        weeklyCumulativeFn(item.newWeekly?.[keyYYYY]?.[keyWeeks] || null) //สรุปการใช้บริการร้านสะดวกซักสะสมรายสัปดาห์
+      }
+      if(item.newMonthly){
+        monthlySalesFn(item.newMonthly?.[keyMonthly] || null,item.newMonthly?.[keyMonthlyOld] || null) // สรุปรายได้/ยอดขายรายเดือน
+        monthlyCumulativeFn(item.newMonthly?.[keyMonthly] || null)//สรุปการใช้บริการร้านสะดวกซักสะสมรายเดือน
+      }
+      if(item.newAnnual){
+        annualSalesFn(item.newAnnual?.[keyYYYY] || null,item.newAnnual?.[keyYYYYOld] || null)
+        annualCumulativeFn(item.newAnnual?.[keyYYYY] || null)//สรุปการใช้บริการร้านสะดวกซักสะสมรายปี
+      }
 
-      monthlySalesFn(item.newMonthly?.[keyMonthly] || null,item.newMonthly?.[keyMonthlyOld] || null) // สรุปรายได้/ยอดขายรายเดือน
-      monthlyCumulativeFn(item.newMonthly?.[keyMonthly] || null)//สรุปการใช้บริการร้านสะดวกซักสะสมรายเดือน
-      
-      annualSalesFn(item.newAnnual?.[keyYYYY] || null,item.newAnnual?.[keyYYYYOld] || null)
-      annualCumulativeFn(item.newAnnual?.[keyYYYY] || null)//สรุปการใช้บริการร้านสะดวกซักสะสมรายปี
    
     
       

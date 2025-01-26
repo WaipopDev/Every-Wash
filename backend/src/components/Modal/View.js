@@ -11,7 +11,7 @@ import {
 import _ from 'lodash'
 
 export const View = (props) => {
-    const { show, title, children, handleSubmit, handleClose } = props
+    const { show, title, children, handleSubmit, handleClose, language } = props
     return (
         <Modal show={show} onHide={handleClose}>
             <Modal.Header closeButton>
@@ -22,19 +22,24 @@ export const View = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
-                    Close
+                    {language['global_close']}
                 </Button>
                 <Button variant="primary" onClick={handleSubmit}>
-                    {"Save"}
+                    {language['global_save']}
                 </Button>
             </Modal.Footer>
         </Modal>
     )
 }
 
-const mapStateToProps = (state) => ({
-
-})
+const mapStateToProps = (state) => {
+    const {
+        ui:{language}
+    } = state
+    return {
+        language
+    }
+}
 
 const mapDispatchToProps = {
 

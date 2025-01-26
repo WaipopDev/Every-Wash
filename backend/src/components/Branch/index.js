@@ -21,15 +21,17 @@ import {
 import DatePicker from "react-datepicker";
 import _ from 'lodash'
 import { reponseDatabase, AddLogAdmin, reponseFirestore } from '../../utils/helpers';
+import ModalView from '../Modal/View';
 
 export const Branch = (props) => {
     const { userData, getBranch, branchData, language } = props
 
     const [show, setShow]                           = useState({ isShow: false, type: 'add' });
-    const [showBank, setShowBank]                   = useState({isShow:false});
-    const [showExpire, setShowExpire]               = useState({isShow:false});
-    const [showPay, setShowPay]                     = useState({isShow:false});
+    const [showBank, setShowBank]                   = useState({ isShow: false });
+    const [showExpire, setShowExpire]               = useState({ isShow: false });
+    const [showPay, setShowPay]                     = useState({ isShow: false });
     const [showBankSelect, setShowBankSelect]       = useState({ isShow: false });
+    const [showDelete, setShowDelete]               = useState({ isShow: false });
     const [validated, setValidated]                 = useState(false);
     const [validatedBank, setValidatedBank]         = useState(false);
     const [dateOpenQRPayment, setdateOpenQRPayment] = useState(new Date());
@@ -46,7 +48,7 @@ export const Branch = (props) => {
     const [statusClosePay, setStatusClosePay]       = useState(true);
     const [typeMember, setTypeMember]               = useState(1);
     const [bankSelect, setBankSelect]               = useState('SCB');
-    const [formValues, setFormValues] = useState({
+    const [formValues, setFormValues]               = useState({
         resourceOwnerId: '',
         resourceSecretId: '',
         requestUId: '',
@@ -59,8 +61,8 @@ export const Branch = (props) => {
         docId: ''
     });
 
-    const refForm     = createRef()
-    const refFormBank = createRef()
+    const refForm     = createRef(null)
+    const refFormBank = createRef(null)
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -72,18 +74,16 @@ export const Branch = (props) => {
         });
     }, [])
 
-    const CustomInput = forwardRef((props, ref) => {
-        const { onClick, value } = props
+    const CustomInput = forwardRef(({ onClick, value }, ref) => {
         return (
-            <Button onClick={onClick}>
+            <Button ref={ref} onClick={onClick}>
                 {`${language['branch_title_1']} : `}<i className="fas fa-calendar-day"></i> {moment(new Date(value)).format('DD-MM-YYYY')}
             </Button>
         )
     })
-    const CustomInputExpire = forwardRef((props, ref) => {
-        const { onClick, value } = props
+    const CustomInputExpire = forwardRef(({ onClick, value }, ref) => {
         return (
-            <Button onClick={onClick}>
+            <Button ref={ref} onClick={onClick}>
                 {`${language['branch_title_2']} : `}<i className="fas fa-calendar-day"></i> {moment(new Date(value)).format('DD-MM-YYYY')}
             </Button>
         )
@@ -106,8 +106,7 @@ export const Branch = (props) => {
                    
                    
                    
-                    // console.log('totalBranch.size', totalBranch.size + 1)
-                    await Firestore.Branch().add({
+                    const param = {
                         status           : 1,
                         idBranch         : form['idBranch'].value,
                         dateOpenQRPayment: moment(new Date(dateOpenQRPayment)).unix(),
@@ -137,8 +136,10 @@ export const Branch = (props) => {
                         ppId             : '',
                         expire           : moment().add(1,'years').unix(),
                         typeMember       : typeMember,
-                    })
-                    const totalBranch = await Firestore.dataBaseFn().collection('Branch').get()
+                    }
+                    await Firestore.AddNewBranch(param)
+                    // const totalBranch = await Firestore.dataBaseFn().collection('Branch').get()
+                    const totalBranch = await Firestore.GetTotalBranch()
                     await Database.DashboardSetData('all',{totalBranch:(totalBranch.size),updateTime : moment().unix()})
                     _.map(reponseFirestore(totalBranch),async (item) => {
                         await Database.DashboardSetData(item.docId,{totalBranch:1,updateTime : moment().unix()})
@@ -390,6 +391,37 @@ export const Branch = (props) => {
         }));
     };
 
+    const handleDeleteShow = async (e) => {
+        setShowDelete({ isShow: true, value: e })
+    }
+
+    const handleDelete = async () => {
+        try {
+            AddLogAdmin(userData, 'Branch', `Delete Branch Name : ${showDelete.value.name}`)
+            await Firestore.DeleteBranch(showDelete.value.docId)
+            // const param = {
+            //     status  : 99,
+            //     modifyAt: moment().unix(),
+            //     modifyBy: userData.id,
+            // }
+            // await Firestore.BranchUpdate(showDelete.value.docId, param)
+            // const resMachine = await Database.WashingMachineGetByChild('branch', showDelete.value.docId)
+            // const snapshot = reponseDatabase(resMachine)
+            // snapshot.map(async (res) => {
+            //     await Database.WashingMachineUpdateByKey(res.docId, param)
+            // })
+            const totalBranch = await Firestore.GetTotalBranch()
+            await Database.DashboardSetData('all', { totalBranch: (totalBranch.size), updateTime: moment().unix() })
+            await Database.RemoveDashboardBranch(showDelete.value.docId)
+            await getBranch()
+            
+            setShowDelete({ isShow: false })
+        } catch (error) {
+            setShowDelete({ isShow: false })
+            console.log(`error`, error)
+        }
+    }
+
     return (
         <>
             <Container fluid>
@@ -407,7 +439,7 @@ export const Branch = (props) => {
                                 </Row>
                             </Card.Header>
                             <Card.Body className="tableNoWrap">
-                                <LietBranch onEdit={(e) => onEdit(e)} onEditBank={(e) => onEditBank(e)} onEditExpire={(e) => onEditExpire(e)} onPay={(e) => onPay(e)} onBankSelect={(e) => onBankSelect(e)}  />
+                                <LietBranch onEdit={(e) => onEdit(e)} onEditBank={(e) => onEditBank(e)} onEditExpire={(e) => onEditExpire(e)} onPay={(e) => onPay(e)} onBankSelect={(e) => onBankSelect(e)} handleDelete={(e)=> handleDeleteShow(e)}  />
                             </Card.Body>
                         </Card>
                     </Col>
@@ -842,6 +874,16 @@ export const Branch = (props) => {
                     </Modal.Footer>
                 </Modal>
 
+                <ModalView show={showDelete.isShow} handleClose={() => setShowDelete({ isShow: false })} title={language['global_delete']} handleSubmit={() => handleDelete()} >
+                    {
+                        showDelete.isShow && (
+                            <>
+                            <p>{language['global_branch_name']} : {showDelete.value?.name}</p>
+                            <p>{language['branch_title_13']} : {showDelete.value?.idBranch}</p>
+                            </>
+                        )
+                    }
+                </ModalView>
             </Container>
 
         </>
