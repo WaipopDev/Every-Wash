@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, collection, query, where, getDocs, updateDoc, doc, addDoc, deleteDoc } from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs, updateDoc, doc, addDoc, deleteDoc, orderBy, limit } from 'firebase/firestore';
 import config from './config'
 import moment from 'moment'
 

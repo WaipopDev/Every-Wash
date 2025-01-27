@@ -15,10 +15,10 @@ class MyDocument extends Document {
 
        
           {/* Fonts and icons */}
-          <link
+          {/* <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
             rel="stylesheet"
-          />
+          /> */}
         </Head>
         <body>
           <div id="page-transition"></div>
