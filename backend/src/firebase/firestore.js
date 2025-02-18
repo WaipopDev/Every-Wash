@@ -60,6 +60,18 @@ export const ProgramClothesDryer = () => {
     // return Firestore.collection('ProgramClothesDryer')
 }
 
+export const ProgramWashingMachineByBranchGet = async (branch) => {
+    const adminQuery = query(ProgramWashingMachine(), where('status', '==', 1), where('branch', '==', branch));
+    return await getDocs(adminQuery);
+    // return ProgramWashingMachine().where('status','==',1).get()
+}
+
+export const ProgramClothesDryerByBranchGet = (branch) => {
+    const adminQuery = query(ProgramClothesDryer(), where('status', '==', 1), where('branch', '==', branch));
+    return getDocs(adminQuery);
+    // return ProgramClothesDryer().where('status','==',1).get()
+}
+
 export const ProgramWashingMachineGet = async () => {
     const adminQuery = query(ProgramWashingMachine(), where('status', '==', 1));
     return await getDocs(adminQuery);
