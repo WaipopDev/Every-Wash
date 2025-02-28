@@ -46,7 +46,6 @@ export default async function handler(req, res) {
             const items = [programFind];
             const transID = Math.floor(Math.random() * 1000000);
             const app_trans_id = `${moment().format('YYMMDD')}_${moment().unix()}`;
-            console.log('config.app_id', config.key1)
             const order = {
                 app_id: config.app_id,
                 app_trans_id: app_trans_id, // translation missing: en.docs.shared.sample_code.comments.app_trans_id
@@ -57,7 +56,7 @@ export default async function handler(req, res) {
                 amount: (amount * 746),
                 description: `Test Payment Zalo - Payment for the order #${transID}`,
                 bank_code: "zalopayapp",
-                callback_url: "https://every-wash.biz/api/payment/callback_zalo",
+                callback_url: "http://34.1.198.64/api/payment/callback_zalo",
             };
     
             // console.log("🚀 ~ handler ~ body:", crypto.HmacSHA256('a', 'a').toString())
