@@ -33,7 +33,8 @@ export default async function handler(req, res) {
             }
             let amount = 0;
             const program = dataFind.program;
-            const programFind = _.find(program, (e) => e.id == idProgram);
+            let programFind = _.find(program, (e) => e.id == idProgram);
+            programFind.idMachine = idMachine;
             if (!_.isUndefined(programFind) && programFind && programFind.status !== 99) {
                 amount = programFind.price;
             } else {
