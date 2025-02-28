@@ -89,6 +89,13 @@ export const WashingMachineGetByID = async (id) => {
     // return WashingMachine().orderByChild('idIOT').equalTo(id).once('value')
 }
 
+export const WashingMachineGetByIDMachine = async (id) => {
+    const washingMachineRef = WashingMachine();
+    const washingMachineQuery = query(washingMachineRef, orderByChild('id'), equalTo(id));
+    return await get(washingMachineQuery);
+    // return WashingMachine().orderByChild('idIOT').equalTo(id).once('value')
+}
+
 
 export const WashingMachineGetByChild = async (child, value) => {
     const washingMachineRef = WashingMachine();
@@ -1251,36 +1258,8 @@ export const RemoveDashboardBranch = async (branch) => {
     return await remove(ref(Database, `/Dashboard/${branch}`));
 }
 
-// export const PointRedemtionGetCheckTransaction = (value) => {
-//     return Database.ref(`/PointAndRedemtion/${moment().format('YYYY-MM-DD')}`).orderByChild('transactionId').equalTo(value).once('value')
-// }
-
-// export const GetTokenKL = async () => {
-//     return Database.ref(`/TokenKL`).once('value')
-//  }
-
-//  export const AddTokenKL = async (param) => {
-//     return Database.ref(`/TokenKL`).set(param)
-//  }
-
-// export const AddLanguage = async (key,param) => {
-//     await Database.ref(`/Language/${key}/`).set(param)
-//     await Database.ref(`/Language/Version/`).set(moment().unix())
-//     return await Database.ref(`/Language/list/${key}`).set(key)
-// }
-
-// export const GetListLanguage = async () => {
-//     return await Database.ref(`/Language/list/`).once('value')
-// }
-
-// export const GetDetailLanguage = async (key) => {
-//     return await Database.ref(`/Language/${key}/`).once('value')
-// }
-
-// export const GetAllLanguage = async () => {
-//     return await Database.ref(`/Language/`).once('value')
-// }
-
-// export const UpdateDetailLanguage = async (key,param) => {
-//     return await Database.ref(`/Language/${key}/`).set(param)
-// }
+export const PaymentZaloCreate = async (param) => {
+    const paymentRef = ref(Database, `/ZaloPaymentCallback`);
+    const newPaymentRef = push(paymentRef);
+    return await set(newPaymentRef, param);
+}

@@ -46,5 +46,9 @@ module.exports = {
 
     keyPath : process.env.PROD_KEY_PATH,
     certPath: process.env.PROD_CERT_PATH,
+
+    ZALO_APP_ID: process.env.ZALO_APP_ID,
+    ZALO_KEY1: process.env.ZALO_KEY1,
+    ZALO_KEY2: process.env.ZALO_KEY2,
   }
 }
