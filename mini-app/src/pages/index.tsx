@@ -42,10 +42,10 @@ const HomePage: React.FunctionComponent = () => {
             <div className="section-container">
                 <List>
                     <List.Item
-                        onClick={() => navigate("/about")}
+                        onClick={() => navigate("/machine")}
                         suffix={<Icon icon="zi-arrow-right" />}
                     >
-                        <div>About</div>
+                        <div>Machine Status</div>
                     </List.Item>
                 </List>
             </div>

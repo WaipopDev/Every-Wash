@@ -1,0 +1,1 @@
+export const API_WEB = "http://localhost:3005/api/v1";
