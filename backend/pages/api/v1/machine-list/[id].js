@@ -16,7 +16,15 @@ export default async function handler(req, res) {
             let resData1 = await Firestore.ProgramWashingMachineByBranchGet(id)
             let resData2 = await Firestore.ProgramClothesDryerByBranchGet(id)
             resData1 = reponseFirestore(resData1)
+            resData1 = resData1.map(item => ({
+                ...item,
+                type: 'washing-machine'
+            }))
             resData2 = reponseFirestore(resData2)
+            resData2 = resData2.map(item => ({
+                ...item,
+                type: 'clothes-dryer'
+            }))
             const formattedData = [...resData1,...resData2]
             res.status(200).json({ data: formattedData })
         } else {
