@@ -1263,3 +1263,10 @@ export const PaymentZaloCreate = async (param) => {
     const newPaymentRef = push(paymentRef);
     return await set(newPaymentRef, param);
 }
+
+export const PaymentZaloCheck = async (idMachine, transactionId) => {
+    const paymentRef = ref(Database, `/ZaloPaymentCallback/`);
+    const paymentQuery = query(paymentRef, orderByChild('app_trans_id'), equalTo(`${transactionId}`));
+    return await get(paymentQuery);
+    // return Database.ref(`/PaymentCallback/${date}/`).orderByChild('refDefault').equalTo(`${ref1}_${ref2}`).once('value')
+}
