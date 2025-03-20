@@ -14,7 +14,6 @@ const HomePage: React.FunctionComponent = () => {
         try {
             const { userInfo } = await getUserInfo({});
             setUser(userInfo);
-            console.log("🚀 ~ getUser ~ userInfo:", userInfo)
         } catch (error: any) {
             if (error && error.message) {
                 setUserError(error.message);
